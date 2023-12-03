@@ -15,4 +15,18 @@ model User {
   email    String  @unique
   name     String?
   password String
+  tasks Task[]
 }
+
+
+model Task {
+  id  Int      @id @default(autoincrement())
+  title  String
+  status  String
+  timeSpent  Int
+  clockIn  DateTime?
+  clockOut  DateTime?
+  userId  Int 
+  user  User   @relation(fields: [userId], references: [id])
+}
+
